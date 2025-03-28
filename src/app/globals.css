@@ -1,42 +1,55 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --retro-title: #ddff27;
+  --retro-accent: #ccffa6;
+  --retro-bg: #3c5ed9;
+  --retro-text: #a6fffc;
+  --font-jersey: 'Jersey 25', monospace;
+  --font-lexend: 'Lexend', sans-serif;
+  --font-size-base: 2rem;
+  --font-size-title: 4rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+    font-family: 'Lexend';
+    src: url('../app/assets/fonts/Jersey25-Regular.woff2') format('woff2'),
+        url('../app/assets/fonts/Lexend-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
-html,
+@font-face {
+    font-family: 'Jersey 25';
+    src: url('../app/assets/fonts/Jersey25-Regular.woff2') format('woff2'),
+        url('../app/assets/fonts/Jersey25-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  font-family: var(--font-lexend);
+  background-color: var(--retro-bg);
+  color: var(--retro-text);
+  font-size: var(--font-size-base);
+  margin: 0.5rem;
+  padding: 1rem;
+  line-height: 1.6;
+  min-height: 100vh;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+h1, h2, h3, h4, h5, h6, .title {
+  font-family: var(--font-jersey);
+  color: var(--retro-title);
+  font-size: var(--font-size-title);
+  text-align: center;
+}
+p {
+   text-align: center;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.text {
+  font-family: var(--font-lexend);
+  font-size: var(--font-size-base);
+  color: var(--retro-text);
 }

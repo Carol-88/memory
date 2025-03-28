@@ -1,0 +1,54 @@
+.card {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Mantiene la tarjeta cuadrada */
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+  width:150px;
+  height:150px;
+
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.cardInner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.cardFront,
+.cardBack {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardFront {
+  transform: rotateY(0deg);
+}
+
+.cardBack {
+  transform: rotateY(180deg);
+}
+
+.card img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color:#ccffa6;
+  
+}
+
+.card img:hover {
+  transform: scale(1.1);
+}

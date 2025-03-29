@@ -1,5 +1,3 @@
-// src/components/Card.tsx
-
 import Image from "next/image";
 import React from "react";
 import styles from "./Card.module.css";
@@ -23,13 +21,13 @@ const Card: React.FC<CardProps> = ({
 }) => {
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    onClick(id);
+    if (!isMatched) onClick(id);
   };
 
   return (
     <div
-      className={`${styles.card} ${isFlipped || isMatched ? styles.flipped : ''} ${
-        isMatched ? styles.matched : ''
+      className={`${styles.card} ${
+        isFlipped || isMatched ? styles.flipped : ""
       }`}
       onClick={handleClick}
     >
@@ -57,6 +55,6 @@ const Card: React.FC<CardProps> = ({
   );
 };
 
-Card.displayName = 'Card';
+Card.displayName = "Card";
 
 export default Card;

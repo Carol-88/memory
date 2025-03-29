@@ -5,26 +5,33 @@ import React from "react";
 import styles from "./Card.module.css";
 
 interface CardProps {
+  id: string;
   character: string;
   image: string;
   isFlipped: boolean;
   isMatched: boolean;
-  onClick: () => void;
+  onClick: (id: string) => void;
 }
 
 const Card: React.FC<CardProps> = ({
+  id,
   character,
   image,
   isFlipped,
   isMatched,
   onClick,
 }) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    onClick(id);
+  };
+
   return (
     <div
-      className={`${styles.card} ${
-        isFlipped || isMatched ? styles.flipped : ""
+      className={`${styles.card} ${isFlipped || isMatched ? styles.flipped : ''} ${
+        isMatched ? styles.matched : ''
       }`}
-      onClick={onClick}
+      onClick={handleClick}
     >
       <div className={styles.cardInner}>
         <div className={styles.cardFront}>
@@ -49,5 +56,7 @@ const Card: React.FC<CardProps> = ({
     </div>
   );
 };
+
+Card.displayName = 'Card';
 
 export default Card;

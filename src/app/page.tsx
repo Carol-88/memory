@@ -1,15 +1,17 @@
 // src/app/page.tsx
 
 "use client";
-import Grid from "../components/Grid";
+import GameBoard from "../components/GameBoard";
+import GameStats from "../components/GameStats";
 import { useGameLogic } from "../utils/gameLogic";
 import styles from "./page.module.css";
 
 export default function Home() {
   const {
-    shuffledCharacters,
+    cards,
     flippedCards,
-    matchedCards,
+    moves,
+    score,
     isGameComplete,
     handleCardClick,
     handleRestartGame,
@@ -18,11 +20,17 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>Memory Game</h1>
+      
+      <GameStats 
+        moves={moves}
+        score={score}
+        onRestart={handleRestartGame}
+      />
+
       <div className={styles.glassBoard}>
-        <Grid
-          characters={shuffledCharacters}
+        <GameBoard
+          cards={cards}
           flippedCards={flippedCards}
-          matchedCards={matchedCards}
           onCardClick={handleCardClick}
         />
       </div>
@@ -30,8 +38,15 @@ export default function Home() {
       {isGameComplete && (
         <div className={styles.modal}>
           <div className={styles.modalContent}>
-            <h2>¡Lo conseguiste!</h2>
-            <button onClick={handleRestartGame}>Volver a empezar</button>
+            <h2>¡Congratulations!</h2>
+            <p>Score: {score}</p>
+            <p>Moves: {moves}</p>
+            <button 
+              className={styles.restartButton}
+              onClick={handleRestartGame}
+            >
+              Play Again
+            </button>
           </div>
         </div>
       )}

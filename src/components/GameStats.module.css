@@ -1,0 +1,26 @@
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.statItem {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.restartButton {
+  padding: 0.5rem 1rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.restartButton:hover {
+  background-color: #357abd;
+}

@@ -1,52 +1,64 @@
-// src/utils/gameLogic.ts
-
-import { useEffect, useMemo, useState } from 'react';
-import { characters, shuffleArray } from './gameUtils';
+import { useEffect, useState } from 'react';
+import { Card, createGameCards } from './gameUtils';
 
 export const useGameLogic = () => {
-  const shuffledCharacters = useMemo(() => shuffleArray(characters), [characters]);
-  const [flippedCards, setFlippedCards] = useState<number[]>([]);
-  const [matchedCards, setMatchedCards] = useState<number[]>([]);
+  const [cards, setCards] = useState<Card[]>(() => createGameCards());
+  const [flippedCards, setFlippedCards] = useState<string[]>([]);
+  const [moves, setMoves] = useState(0);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
-  if (flippedCards.length === 2) {
-    const [firstIndex, secondIndex] = flippedCards;
-    if (
-      shuffledCharacters[firstIndex].character ===
-      shuffledCharacters[secondIndex].character
-    ) {
-      setMatchedCards((prevMatched) => [...prevMatched, firstIndex, secondIndex]);
-      setFlippedCards([]); // Limpiar flippedCards para permitir nuevas selecciones
-    } else {
-      setTimeout(() => {
-        setFlippedCards([]); // Volver a voltear las cartas si no coinciden
-      }, 1000);
+    if (flippedCards.length === 2) {
+      setMoves(prev => prev + 1);
+      
+      const [firstId, secondId] = flippedCards;
+      const firstCard = cards.find(card => card.id === firstId);
+      const secondCard = cards.find(card => card.id === secondId);
+
+      if (firstCard?.character === secondCard?.character) {
+        // Match found
+        setTimeout(() => {
+          setCards(prevCards =>
+            prevCards.map(card =>
+              flippedCards.includes(card.id) ? { ...card, isMatched: true } : card
+            )
+          );
+          setScore(prev => prev + 1); // Increment score by 1 for each match
+          setFlippedCards([]);
+        }, 500);
+      } else {
+        // No match
+        setTimeout(() => {
+          setFlippedCards([]);
+        }, 1000);
+      }
     }
-  }
-}, [flippedCards, shuffledCharacters]);
+  }, [flippedCards, cards]);
 
-
-  const handleCardClick = (index: number) => {
+  const handleCardClick = (cardId: string) => {
     if (
       flippedCards.length < 2 &&
-      !flippedCards.includes(index) &&
-      !matchedCards.includes(index)
+      !flippedCards.includes(cardId) &&
+      !cards.find(card => card.id === cardId)?.isMatched
     ) {
-      setFlippedCards([...flippedCards, index]);
+      setFlippedCards(prev => [...prev, cardId]);
     }
   };
 
   const handleRestartGame = () => {
+    setCards(createGameCards());
     setFlippedCards([]);
-    setMatchedCards([]);
+    setMoves(0);
+    setScore(0);
   };
 
-  const isGameComplete = matchedCards.length === shuffledCharacters.length;
+  const isGameComplete = cards.every(card => card.isMatched);
 
   return {
-    shuffledCharacters,
+    cards,
     flippedCards,
-    matchedCards,
+    moves,
+    score,
     isGameComplete,
     handleCardClick,
     handleRestartGame,

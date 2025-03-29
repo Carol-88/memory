@@ -20,12 +20,8 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>Memory Game</h1>
-      
-      <GameStats 
-        moves={moves}
-        score={score}
-        onRestart={handleRestartGame}
-      />
+
+      <GameStats moves={moves} score={score} onRestart={handleRestartGame} />
 
       <div className={styles.glassBoard}>
         <GameBoard
@@ -38,10 +34,10 @@ export default function Home() {
       {isGameComplete && (
         <div className={styles.modal}>
           <div className={styles.modalContent}>
-            <h2>¡Congratulations!</h2>
+            <h2 className={styles.title}>¡Congratulations!</h2>
             <p>Score: {score}</p>
             <p>Moves: {moves}</p>
-            <button 
+            <button
               className={styles.restartButton}
               onClick={handleRestartGame}
             >

@@ -1,36 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Juego Memory programada con IA, probando vibe coding.
 
-## Getting Started
+En mi opinión o eres un senior con muy buena comunicación, o la IA aún no esta preparada para programar sin errores y con buenas prácticas.
+He tenido que corregir muchísimo código, la IA se repite y entra en bucle si le lanzas el mismo error, he enfrentado a varias IAs para que corrijan sus errores, con el handicap de tenerle que explicar de nuevo todo el contexto y la estructura del proyecto.
 
-First, run the development server:
+Conclusión: a día de hoy en 2025, es una buena ayuda para hacerte una idea de lo que tienes que hacer, o pedirle explicaciones de errores, maquetaciones basicas, etc. Pero necesita alguien detrás que sepa muy bien lo que necesita, y siempre tendrás que comprobar el código.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+https://sunny-profiterole-2aeaed.netlify.app/
